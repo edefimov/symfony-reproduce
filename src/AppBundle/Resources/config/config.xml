@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- This definition shows incorrect report -->
+        <service id="AppBundle\Service\Child" public="false">
+            <argument type="service" id="serializer" />
+        </service>
+
+        <!-- This definition shows actual report -->
+        <!--<service id="AppBundle\Service\Child" public="true">-->
+            <!--<argument type="service" id="serializer" />-->
+        <!--</service>-->
+
+        <service id="AppBundle\Service\ParentA" public="true">
+            <argument type="service" id="AppBundle\Service\Child" />
+        </service>
+    </services>
+</container>
